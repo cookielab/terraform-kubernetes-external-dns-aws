@@ -1,3 +1,3 @@
-# Terraform module for Kubernetes External DNS on AWS
+# Terraform module for Kubernetes External DNS on AWS
 
 @todo
