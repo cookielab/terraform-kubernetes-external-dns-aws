@@ -62,6 +62,12 @@ variable "kubernetes_deployment_image_tag" {
   default = "v0.5.15"
 }
 
+variable "kubernetes_deployment_node_selector" {
+  type = map(string)
+  default = {}
+  description = "Node selectors for kubernetes deployment"
+}
+
 variable "aws_create_iam_policy" {
   type = bool
   default = true

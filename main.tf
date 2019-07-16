@@ -95,6 +95,8 @@ resource "kubernetes_deployment" "external_dns" {
             secret_name = kubernetes_service_account.external_dns.default_secret_name
           }
         }
+
+        node_selector = var.kubernetes_deployment_node_selector
       }
     }
   }
