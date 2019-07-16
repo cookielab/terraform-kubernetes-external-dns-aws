@@ -70,7 +70,7 @@ variable "aws_create_iam_policy" {
 
 variable "aws_iam_policy_name" {
   type = string
-  default = "KubernetesAlbIngressController"
+  default = "KubernetesExternalDNS"
   description = "Name of AWS IAM policy."
 }
 
