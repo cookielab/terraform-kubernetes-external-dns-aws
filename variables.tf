@@ -28,18 +28,6 @@ variable "owner_id" {
   description = "Value of TXT record for detection zone records managed by this service."
 }
 
-variable "aws_create_policy" {
-  type = bool
-  default = true
-  description = "Do you want to create IAM policy?"
-}
-
-variable "aws_role_for_policy" {
-  type = string
-  default = null
-  description = "AWS role name for attaching IAM policy"
-}
-
 variable "kubernetes_namespace" {
   type = string
   default = "kube-system"
@@ -52,39 +40,42 @@ variable "kubernetes_namespace_create" {
   description = "Do you want to create kubernetes namespace?"
 }
 
-variable "kubernetes_service_account_name" {
+variable "kubernetes_resources_name_prefix" {
   type = string
-  default = "external-dns"
-  description = "Kubernetes service account name."
+  default = ""
+  description = "Prefix for kubernetes resources name. For example `tf-module-`"
 }
 
-variable "kubernetes_cluster_role_name" {
-  type = string
-  default = "external-dns"
-  description = "Kubernetes cluster role name."
+variable "kubernetes_resources_labels" {
+  type = map(string)
+  default = {}
+  description = "Additional labels for kubernetes resources."
 }
 
-variable "kubernetes_cluster_role_binding_name" {
-  type = string
-  default = "external-dns"
-  description = "Kubernetes cluster role binding name."
-}
-
-variable "kubernetes_deployment_name" {
-  type = string
-  default = "external-dns"
-  description = "Kubernetes deployment name."
-}
-
-variable "external_dns_image_registry" {
+variable "kubernetes_deployment_image_registry" {
   type = string
   default = "registry.opensource.zalan.do/teapot/external-dns"
-  description = "External DNS docker image registry."
 }
 
-variable "external_dns_image_tag" {
+variable "kubernetes_deployment_image_tag" {
   type = string
   default = "v0.5.15"
-  description = "External DNS docker image tag."
 }
 
+variable "aws_create_iam_policy" {
+  type = bool
+  default = true
+  description = "Do you want to create IAM policy?"
+}
+
+variable "aws_iam_policy_name" {
+  type = string
+  default = "KubernetesAlbIngressController"
+  description = "Name of AWS IAM policy."
+}
+
+variable "aws_iam_role_for_policy" {
+  type = string
+  default = null
+  description = "AWS role name for attaching IAM policy"
+}

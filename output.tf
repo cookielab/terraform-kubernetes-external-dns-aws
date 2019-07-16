@@ -1,5 +1,5 @@
 output "aws_iam_policy_arn" {
-  value = var.aws_create_policy ? aws_iam_policy.external_dns.0.arn : null
+  value = length(aws_iam_policy.external_dns) == 0 ? null : aws_iam_policy.external_dns.0.arn
 }
 
 output "kubernetes_deployment" {
