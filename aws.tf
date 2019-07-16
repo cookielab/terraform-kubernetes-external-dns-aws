@@ -3,7 +3,7 @@ resource "aws_iam_policy" "external_dns" {
 
   name = var.aws_iam_policy_name
   path = "/"
-  description = "Allows access to resources needed to run AWS ALB Ingress Controller."
+  description = "Allows access to resources needed to run external dns."
 
   policy = <<EOF
 {
