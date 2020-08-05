@@ -85,3 +85,9 @@ variable "aws_iam_role_for_policy" {
   default = null
   description = "AWS role name for attaching IAM policy"
 }
+
+variable "kubernetes_deployment_annotations" {
+  type = map(string)
+  default = {}
+  description = "Annotations for pod template"
+}

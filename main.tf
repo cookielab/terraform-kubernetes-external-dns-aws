@@ -71,6 +71,7 @@ resource "kubernetes_deployment" "external_dns" {
     template {
       metadata {
         labels = local.kubernetes_deployment_labels
+        annotations = var.kubernetes_deployment_annotations
       }
 
       spec {
