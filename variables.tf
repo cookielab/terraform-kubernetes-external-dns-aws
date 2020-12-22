@@ -54,12 +54,12 @@ variable "kubernetes_resources_labels" {
 
 variable "kubernetes_deployment_image_registry" {
   type = string
-  default = "registry.opensource.zalan.do/teapot/external-dns"
+  default = "k8s.gcr.io/external-dns/external-dns"
 }
 
 variable "kubernetes_deployment_image_tag" {
   type = string
-  default = "v0.5.15"
+  default = "v0.7.3"
 }
 
 variable "kubernetes_deployment_node_selector" {
