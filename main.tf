@@ -14,18 +14,12 @@ resource "kubernetes_cluster_role" "external_dns" {
 
   rule {
     api_groups = [""]
-    resources = ["services"]
+    resources = ["services","endpoints","pods"]
     verbs = ["get","watch","list"]
   }
 
   rule {
-    api_groups = [""]
-    resources = ["pods"]
-    verbs = ["get","watch","list"]
-  }
-
-  rule {
-    api_groups = ["extensions"]
+    api_groups = ["extensions","networking.k8s.io"]
     resources = ["ingresses"]
     verbs = ["get","watch","list"]
   }
@@ -64,6 +58,10 @@ resource "kubernetes_deployment" "external_dns" {
   }
 
   spec {
+    strategy {
+      type = "Recreate"
+    }
+
     selector {
       match_labels = local.kubernetes_deployment_labels_selector
     }
@@ -95,6 +93,10 @@ resource "kubernetes_deployment" "external_dns" {
           secret {
             secret_name = kubernetes_service_account.external_dns.default_secret_name
           }
+        }
+
+        security_context {
+          fs_group = 65534
         }
 
         node_selector = var.kubernetes_deployment_node_selector
