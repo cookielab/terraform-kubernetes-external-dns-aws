@@ -1,5 +1,8 @@
 # Terraform module for Kubernetes External DNS on AWS
 
+> [!WARNING]  
+> This module is no longer maintained. We recommend switching to [Helm](https://artifacthub.io/packages/helm/external-dns/external-dns).
+
 This module deploys [External DNS](https://github.com/kubernetes-sigs/external-dns) for AWS to your Kubernetes cluster.
 
 ## Usage
